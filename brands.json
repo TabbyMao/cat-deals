@@ -1,0 +1,52 @@
+{
+  "_说明": "每个条目是一组搜索。queries 是去 Amazon/Walmart 搜索用的关键词；match 是标题或品牌里必须出现的词（任意一个即可，不分大小写），用来过滤掉搜索结果里的无关商品。改品牌只需要改这个文件。",
+
+  "categories": {
+    "food":   { "label": "猫粮",   "require_any": ["cat", "kitten", "feline"], "exclude_any": ["dog", "puppy"] },
+    "litter": { "label": "猫砂",   "require_any": ["litter"],                  "exclude_any": ["dog", "litter box", "litter mat", "litter scoop", "litter genie", "litter tray"] },
+    "meds":   { "label": "驱虫药", "require_any": ["cat", "kitten", "feline"], "exclude_any": ["dog", "puppy"] }
+  },
+
+  "brands": [
+    { "category": "food", "brand": "ZIWI Peak",             "queries": ["ZIWI Peak cat food"],             "match": ["ziwi"] },
+
+    { "category": "food", "brand": "Friskies",              "group": "Purina", "queries": ["Friskies cat food"],        "match": ["friskies"] },
+    { "category": "food", "brand": "Fancy Feast",           "group": "Purina", "queries": ["Fancy Feast cat food"],     "match": ["fancy feast"] },
+    { "category": "food", "brand": "Purina ONE",            "group": "Purina", "queries": ["Purina ONE cat food"],      "match": ["purina one"] },
+    { "category": "food", "brand": "Cat Chow",              "group": "Purina", "queries": ["Purina Cat Chow"],          "match": ["cat chow", "kitten chow"] },
+    { "category": "food", "brand": "Pro Plan",              "group": "Purina", "queries": ["Purina Pro Plan cat food"], "match": ["pro plan"] },
+    { "category": "food", "brand": "Purina Beyond",         "group": "Purina", "queries": ["Purina Beyond cat food"],   "match": ["purina beyond", "beyond grain free"] },
+    { "category": "food", "brand": "Purina Delectables",    "group": "Purina", "queries": ["Purina Delectables cat treat"], "match": ["delectables"] },
+
+    { "category": "food", "brand": "Instinct",              "queries": ["Instinct cat food"],              "match": ["instinct"] },
+    { "category": "food", "brand": "FelineNature",          "queries": ["FelineNature cat food"],          "match": ["felinenature", "feline nature"] },
+    { "category": "food", "brand": "Vital Essentials (VE)", "queries": ["Vital Essentials cat food"],      "match": ["vital essentials"] },
+    { "category": "food", "brand": "Sheba",                 "queries": ["Sheba cat food"],                 "match": ["sheba"] },
+    { "category": "food", "brand": "Hill's Science Diet",   "queries": ["Hill's Science Diet cat food"],   "match": ["science diet"] },
+    { "category": "food", "brand": "ACANA",                 "queries": ["ACANA cat food"],                 "match": ["acana"] },
+    { "category": "food", "brand": "INABA Churu",           "queries": ["INABA Churu cat treat"],          "match": ["churu"] },
+
+    { "category": "litter", "brand": "Fresh Step",          "queries": ["Fresh Step cat litter"],          "match": ["fresh step"] },
+    { "category": "litter", "brand": "Arm & Hammer",        "queries": ["Arm & Hammer cat litter"],        "match": ["arm & hammer", "arm and hammer", "arm&hammer"] },
+    { "category": "litter", "brand": "Tidy Cats",           "group": "Purina", "queries": ["Purina Tidy Cats litter"], "match": ["tidy cats"] },
+    { "category": "litter", "brand": "Dr. Elsey's",         "queries": ["Dr. Elsey's cat litter"],         "match": ["elsey"] },
+    { "category": "litter", "brand": "Scoop Away",          "queries": ["Scoop Away cat litter"],          "match": ["scoop away"] },
+    { "category": "litter", "brand": "Cat's Pride",         "queries": ["Cat's Pride litter"],             "match": ["cat's pride", "cats pride", "cat’s pride"] },
+
+    { "category": "meds", "brand": "Advantage II",          "queries": ["Advantage II for cats"],          "match": ["advantage ii", "advantage 2"] },
+    { "category": "meds", "brand": "Advantage XD",          "queries": ["Advantage XD for cats"],          "match": ["advantage xd"] },
+    { "category": "meds", "brand": "Frontline Plus",        "queries": ["Frontline Plus for cats"],        "match": ["frontline plus"] },
+    { "category": "meds", "brand": "PetArmor Plus",         "queries": ["PetArmor Plus for cats"],         "match": ["petarmor plus", "pet armor plus"] },
+    { "category": "meds", "brand": "Catego",                "queries": ["Catego flea for cats"],           "match": ["catego"] },
+    { "category": "meds", "brand": "Seresto",               "queries": ["Seresto cat collar"],             "match": ["seresto"] }
+  ],
+
+  "tiers": [
+    { "key": "le50",  "label": "5折及以下", "sub": "省 50% 以上",  "max_ratio": 0.50 },
+    { "key": "50-60", "label": "5–6折",     "sub": "省 40–50%",   "max_ratio": 0.60 },
+    { "key": "60-70", "label": "6–7折",     "sub": "省 30–40%",   "max_ratio": 0.70 },
+    { "key": "70-80", "label": "7–8折",     "sub": "省 20–30%",   "max_ratio": 0.80 },
+    { "key": "80-90", "label": "8–9折",     "sub": "省 10–20%",   "max_ratio": 0.90 },
+    { "key": "90+",   "label": "9折以上",   "sub": "省 10% 以内", "max_ratio": 0.99 }
+  ]
+}

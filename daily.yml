@@ -1,0 +1,54 @@
+name: Daily cat deals
+
+on:
+  schedule:
+    # 每天 UTC 11:17 = 美东早上 6:17（冬令时）/ 7:17（夏令时）
+    - cron: "17 11 * * *"
+  workflow_dispatch: {}   # 允许在 GitHub 网页上手动点 "Run workflow"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-deals
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m unittest discover tests
+
+      - name: Fetch deals
+        env:
+          AMAZON_CLIENT_ID: ${{ secrets.AMAZON_CLIENT_ID }}
+          AMAZON_CLIENT_SECRET: ${{ secrets.AMAZON_CLIENT_SECRET }}
+          AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}
+          WALMART_CONSUMER_ID: ${{ secrets.WALMART_CONSUMER_ID }}
+          WALMART_KEY_VERSION: ${{ secrets.WALMART_KEY_VERSION }}
+          WALMART_PRIVATE_KEY: ${{ secrets.WALMART_PRIVATE_KEY }}
+          WALMART_PUBLISHER_ID: ${{ secrets.WALMART_PUBLISHER_ID }}
+        run: python scripts/fetch_deals.py
+
+      - name: Commit data
+        run: |
+          git config user.name "cat-deals-bot"
+          git config user.email "cat-deals-bot@users.noreply.github.com"
+          git add public/data/deals.json data/history.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Daily deals $(date -u +%F)"
+            git push
+          fi

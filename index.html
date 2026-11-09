@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>猫猫好价 · 每日猫粮猫砂驱虫折扣</title>
+<meta name="description" content="每天自动汇总 Amazon 和 Walmart 上指定品牌猫粮、猫砂、驱虫药的折扣。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🐾</span>
+      <div>
+        <h1>猫猫好价</h1>
+        <p class="tagline">Amazon · Walmart 每日猫粮 / 猫砂 / 驱虫折扣</p>
+      </div>
+    </div>
+    <div class="meta" id="meta"></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="banner"></div>
+
+  <nav class="tabs" id="tabs" aria-label="分类"></nav>
+
+  <section class="toolbar" aria-label="筛选">
+    <div class="seg" id="stores" role="group" aria-label="商店"></div>
+    <select id="brand" aria-label="品牌"></select>
+    <select id="sort" aria-label="排序">
+      <option value="discount">折扣最大</option>
+      <option value="price">价格最低</option>
+      <option value="low30">30天最低价优先</option>
+    </select>
+    <label class="check"><input type="checkbox" id="onlyLow"> 只看30天最低价</label>
+    <label class="check" title="Amazon 的 Subscribe & Save：订阅定期送货的价格"><input type="checkbox" id="sns"> 按订阅价算折扣</label>
+    <input type="search" id="q" placeholder="搜标题，比如 salmon、kitten、25 lb" aria-label="搜索">
+  </section>
+
+  <div class="tierbar" id="tierbar" aria-label="折扣档位"></div>
+
+  <main id="list" aria-live="polite"></main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>价格每天自动更新一次，下单前请以商家页面显示的价格为准。折扣按「现价 ÷ 原价」分档；原价优先用商家标注的划线价，没有时用本站记录的近 30 天最高价。</p>
+    <p>As an Amazon Associate I earn from qualifying purchases.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
