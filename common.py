@@ -1,4 +1,4 @@
-"""Shared helpers for the store providers."""
+scripts/providers/common.py"""Shared helpers for the store providers."""
 import json
 import time
 import urllib.error
