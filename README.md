@@ -1,5 +1,7 @@
 # 🐾 猫猫好价 · Cat Deals
 
+🌐 **网站 / Website：https://cat-deals.pages.dev**
+
 每天自动汇总 Amazon 和 Walmart 上指定品牌的**猫粮、猫砂、非处方外用驱虫药**折扣，按折扣力度分档展示。
 *Automatically collects daily Amazon and Walmart discounts on selected brands of **cat food, cat litter and OTC topical flea treatments**, grouped by discount level.*
 
